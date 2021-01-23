@@ -16,6 +16,7 @@ class APISuppliers: ObservableObject {
     @Published var suppliersList = [allSuppliers]()
     @Published var suppliersDetail = allSuppliers (id: "", createdAt: "", fullname: "", avatar: "", phone: "", company: "", email: "")
     @Published var loaded = false
+//    @Published var refreshed = false
     
     func getSuppliers() {
         guard let url = URL(string: "https://5f69b5fcd808b90016bc0551.mockapi.io/api/v1/addressBook/list") else {return}
@@ -33,6 +34,7 @@ class APISuppliers: ObservableObject {
                         self.suppliersList = success
                         
                         self.loaded = true
+//                        self.refreshed = true
                         self.didChange.send(self)
                         print("fornitori scaricati")
                         print(success)

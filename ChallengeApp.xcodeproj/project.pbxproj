@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A91E1F1E25BC343B006234E3 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E1F1D25BC343B006234E3 /* MainButton.swift */; };
+		A92885C025BC7D5F0027D5F8 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92885BF25BC7D5F0027D5F8 /* ActivityIndicator.swift */; };
 		A97254AD25BAED1F008A754D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97254AC25BAED1F008A754D /* AppDelegate.swift */; };
 		A97254AF25BAED1F008A754D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97254AE25BAED1F008A754D /* SceneDelegate.swift */; };
 		A97254B125BAED1F008A754D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97254B025BAED1F008A754D /* ContentView.swift */; };
@@ -45,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		A91E1F1D25BC343B006234E3 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		A91E1F2525BC4D67006234E3 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A92885BF25BC7D5F0027D5F8 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		A97254A925BAED1F008A754D /* ChallengeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChallengeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97254AC25BAED1F008A754D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A97254AE25BAED1F008A754D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +185,7 @@
 				A97254FC25BAEF08008A754D /* SearchBar.swift */,
 				A972550125BAEF15008A754D /* SuppliersRow.swift */,
 				A972550625BAEF1F008A754D /* Loading.swift */,
+				A92885BF25BC7D5F0027D5F8 /* ActivityIndicator.swift */,
 				A91E1F1D25BC343B006234E3 /* MainButton.swift */,
 			);
 			path = Presets;
@@ -272,6 +276,7 @@
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = A97254A025BAED1F008A754D;
 			productRefGroup = A97254AA25BAED1F008A754D /* Products */;
@@ -322,6 +327,7 @@
 				A972550225BAEF15008A754D /* SuppliersRow.swift in Sources */,
 				A972550725BAEF1F008A754D /* Loading.swift in Sources */,
 				A97254F825BAEEFB008A754D /* HomeView.swift in Sources */,
+				A92885C025BC7D5F0027D5F8 /* ActivityIndicator.swift in Sources */,
 				A97254F025BAEEF2008A754D /* DetailView.swift in Sources */,
 				A97254AD25BAED1F008A754D /* AppDelegate.swift in Sources */,
 				A97254AF25BAED1F008A754D /* SceneDelegate.swift in Sources */,
@@ -368,6 +374,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A97254B825BAED21008A754D /* Base */,
+				A91E1F2525BC4D67006234E3 /* it */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -379,6 +386,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -440,6 +448,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

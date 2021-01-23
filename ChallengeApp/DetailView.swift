@@ -24,7 +24,8 @@ struct DetailView: View {
             
             Image(uiImage: self.suppliersController.suppliersDetail.avatar.loadImage())
                 .resizable().scaledToFit()
-                .cornerRadius(12)
+//                .cornerRadius(12)
+                .cornerRadius(12, corners: [.bottomLeft, .bottomRight])
                 .edgesIgnoringSafeArea(.top)
             
             //            HStack {
@@ -37,64 +38,99 @@ struct DetailView: View {
             //                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
             //                }
             //            }.padding(.horizontal, 30)
+            HStack(alignment: .center) {
+                
+                Button (action: {self.inDetail = false}) {
+                    Image("closeArrow")
+                        .resizable().scaledToFit()
+                        .foregroundColor(Color.white)
+
+                        .frame(height: 10)
+                        
+                }
+                
+                Spacer()
+                    Text(self.suppliersController.suppliersDetail.fullname)
+//                        Text("nome completo")
+                        .foregroundColor(Color.white)
+                        .fontWeight(.bold)
+                        .padding(.vertical, 10)
+                        .font(.system(size: 18))
+//                        .padding(.leading, -30)
+                Spacer()
+            }.padding(.horizontal, 30).background(Color.black.opacity(0.2))
             
             VStack(alignment: .leading) {
-                
                 Spacer()
                 HStack {
                     Spacer()
                     VStack(alignment: .leading) {
-                        Text(self.suppliersController.suppliersDetail.fullname)
+                        
+//
+                        Text("Compagnia")
                             .foregroundColor(Color("Title"))
                             .fontWeight(.bold)
-                            .padding(.bottom, 15)
-                            .font(.system(size: 16))
+                            .padding(.bottom, 1)
+                            .font(.system(size: 14))
                         
-                        Text("Compagnia: " + self.suppliersController.suppliersDetail.company)
+//                        Text("nome completo")
+                        Text(self.suppliersController.suppliersDetail.company)
                             .fontWeight(.medium)
                             .foregroundColor(Color("Description"))
                             .font(.system(size: 14))
-                            .padding(.bottom, 15)
+                            .padding(.bottom, 20)
                         
-                        Text("Email: " + self.suppliersController.suppliersDetail.email.lowercased())
+                        Text("Email")
+                            .foregroundColor(Color("Title"))
+                            .fontWeight(.bold)
+                            .padding(.bottom, 1)
+                            .font(.system(size: 14))
+                        
+//                        Text("simone.ghisu@ied.edu")
+                                                    Text(self.suppliersController.suppliersDetail.email.lowercased())
                             .fontWeight(.medium)
                             .foregroundColor(Color("Description"))
                             .font(.system(size: 14))
-                            .padding(.bottom, 15)
+                            .padding(.bottom, 20)
                         
-                        Text("Fornitore dal: " + self.dateFormatted)
+                        Text("Fornitore dal")
+                            .foregroundColor(Color("Title"))
+                            .fontWeight(.bold)
+                            .padding(.bottom, 1)
+                            .font(.system(size: 14))
+                        
+//                        Text("1 febbraio 2020")
+                        Text(self.dateFormatted)
                             .fontWeight(.medium)
                             .foregroundColor(Color("Description"))
                             .font(.system(size: 14))
                             .padding(.bottom, 10)
                         
                         
-                        MainButton(text: "+39 3493058797", action: {let telephone = "tel://"
-                                    let formattedString = telephone + "3493058797"
+                        MainButton(text: self.suppliersController.suppliersDetail.phone, action: {let telephone = "tel://"
+                                    let formattedString = telephone + self.suppliersController.suppliersDetail.phone
                                     guard let url = URL(string: formattedString) else { return }
                                     UIApplication.shared.open(url)}).padding(.top, 30)
                         
                     }
                     Spacer()
                 }
-                .padding(.horizontal, 30).padding(.bottom, 50).padding(.top, 30)
+                
                 //                .background(Color("UpperGB")).cornerRadius(25, corners: [.topLeft, .topRight]).shadow(color: Color("UpperGB").opacity(0.5), radius: 10, x:0, y: 0)
-            }
+            }.padding(.horizontal, 30).padding(.bottom, 50).padding(.top)
             .edgesIgnoringSafeArea(.bottom)
             .onAppear{
                 let string = self.suppliersController.suppliersDetail.createdAt
-                
+
                 let dateFormatter = DateFormatter()
                 let tempLocale = dateFormatter.locale
-                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.locale = Locale(identifier: "it_CH")
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                 let date = dateFormatter.date(from: string)!
                 dateFormatter.dateFormat = "dd MMMM yyyy"
                 dateFormatter.locale = tempLocale // reset the locale
                 let dateString = dateFormatter.string(from: date)
                 self.dateFormatted = dateString
-                //                print(dateFormatter.date(from: string) ?? "Unknown date")
-                
             }
         }
     }

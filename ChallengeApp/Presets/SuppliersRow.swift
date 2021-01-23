@@ -39,7 +39,7 @@ struct SuppliersRow: View {
             //            Image("goArrow")
             //                .resizable().scaledToFit()
             //                .frame(width: 7)
-        }
+        }.background(Color("Background"))
     }
 }
 

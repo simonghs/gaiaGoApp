@@ -18,15 +18,27 @@ struct SearchBar: View {
     var body: some View {
         ZStack(alignment: .leading) {
             
-            if value.isEmpty {
-                Text(placeholder)
-                    .fontWeight(.semibold)
+//            HStack {
+                Image("Search")
+                    .resizable().scaledToFit()
                     .foregroundColor(Color("Placeholder"))
-                    .font(.system(size: 14))
-            }
+                    .frame(width: 22.0)
+                    .padding(.trailing, 1)
+                
+                if value.isEmpty {
+                    Text(placeholder)
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color("Placeholder"))
+                        .font(.system(size: 14))
+                        .padding(.leading, 30)
+                }
+                
+                TextField("", text: $value, onEditingChanged: editingChanged, onCommit: commit)
+                    .foregroundColor(.white)
+                    .padding(.leading, 30)
+//            }
             
-            TextField("", text: $value, onEditingChanged: editingChanged, onCommit: commit)
-                .foregroundColor(.white)
+            
             
         }.padding(.horizontal)
         .overlay(
