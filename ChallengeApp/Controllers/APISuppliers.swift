@@ -14,6 +14,7 @@ class APISuppliers: ObservableObject {
     var didChange = PassthroughSubject<APISuppliers, Never>()
     
     @Published var suppliersList = [allSuppliers]()
+    @Published var suppliersDetail = allSuppliers (id: "", createdAt: "", fullname: "", avatar: "", phone: "", company: "", email: "")
     @Published var loaded = false
     
     func getSuppliers() {
@@ -29,9 +30,7 @@ class APISuppliers: ObservableObject {
                 if let success = try? JSONDecoder().decode([allSuppliers].self, from: data) {
                     DispatchQueue.main.async {
                         
-                        if self.suppliersList != success {
-                            self.suppliersList = success
-                        }
+                        self.suppliersList = success
                         
                         self.loaded = true
                         self.didChange.send(self)

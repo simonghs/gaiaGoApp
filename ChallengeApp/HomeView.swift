@@ -12,6 +12,7 @@ struct HomeView: View {
     @EnvironmentObject var suppliersController: APISuppliers
     
     @State private var searchText: String = ""
+    @State var showDetail: Bool = false
     
     var body: some View {
         
@@ -35,26 +36,21 @@ struct HomeView: View {
                     .padding(.bottom, 20)
                 
                 ScrollView(.vertical, showsIndicators: false){
-                    VStack {
-                        ForEach(suppliersController.suppliersList, id: \.id ) { list in
-                            
-                            HStack {
-                                Image(uiImage: list.avatar.loadImage())
-                                    .resizable().scaledToFit()
-                                    .frame(width: 32.0, height: 32.0)
+                    
+                    ForEach(suppliersController.suppliersList, id: \.id) { list in
+                        
+                        //                                NavigationLink(destination: DetailView(inDetail: self.$inDetail, detailSuppliers: list)
+                        //                                    .navigationBarTitle(Text("x"))
+                        //                                    .navigationBarHidden(true),
+                        //                                           isActive: self.$inDetail) {
+                        SuppliersRow(company: list.company, fullname: list.fullname, avatar: list.avatar).padding(.bottom, 20)
+                            .onTapGesture {
+                                self.suppliersController.suppliersDetail = list
+                                self.showDetail.toggle()
                                 
-                                VStack(alignment: .leading) {
-                                    Text(list.company)
-                                        .foregroundColor(Color("Title"))
-                                    Text(list.fullname)
-                                        .foregroundColor(Color("Description"))
-                                }
-                                
-                                Spacer()
-                                Text(">").foregroundColor(Color("Description"))
-                                
-                            }.padding(.vertical)
-                        }
+                            }.sheet(isPresented: $showDetail) {
+                                DetailView(inDetail: $showDetail)
+                            }
                     }
                 }
             }.padding(.horizontal, 30)
