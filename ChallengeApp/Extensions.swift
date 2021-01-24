@@ -1,43 +1,34 @@
 //
-//  ContentView.swift
+//  Extensions.swift
 //  ChallengeApp
 //
-//  Created by Simone on 22/01/21.
+//  Created by Simone on 24/01/21.
 //
 
 import SwiftUI
 
-struct ContentView: View {
-    
-    @EnvironmentObject var suppliersController: APISuppliers
-    
-    var body: some View {
-        NavigationView {
-            Group {
-                if suppliersController.loaded {
-                    HomeView()
-                }
-                else {
-                    Loading().onAppear{
-                        suppliersController.getSuppliers()
-                        
-                    }
-                }
+//Visualizzare immagini tramite url
+extension String {
+    func loadImage()->UIImage {
+        do {
+            guard let url = URL(string: self)
+            
+            else {
+                return UIImage()
             }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
+            
+            let data: Data = try Data(contentsOf: url)
+            return UIImage(data: data) ?? UIImage()
+            
+        } catch {
+            //
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environmentObject(APISuppliers())
+        return UIImage()
     }
 }
 
 
+//custom corner radius, singoli angoli
 struct RoundedCorner: Shape {
     
     var radius: CGFloat = .infinity
@@ -49,24 +40,30 @@ struct RoundedCorner: Shape {
     }
 }
 
+
 extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
 }
 
+
+//chiudere tastiera al tap
 extension UIApplication {
     func endEditing() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
+
+//nascondere ed eliminare gli elementi tramite custom hidden
 extension View {
     
     func isHidden(_ hidden: Bool, remove: Bool = false) -> some View {
         modifier(HiddenModifier(isHidden: hidden, remove: remove))
     }
 }
+
 
 fileprivate struct HiddenModifier: ViewModifier {
     

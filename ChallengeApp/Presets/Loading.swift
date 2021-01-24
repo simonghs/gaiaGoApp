@@ -16,12 +16,10 @@ struct Loading: View {
             
             VStack(alignment: .center) {
                 Spacer()
-                Text("Caricamento...")
-                    .foregroundColor(Color("Title"))
+                Lottie(filename: "loading").frame(height: 140)
                 Spacer()
             }
         }
-        
     }
 }
 

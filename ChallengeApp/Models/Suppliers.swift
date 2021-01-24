@@ -10,13 +10,13 @@ import Combine
 import SwiftUI
 
 struct allSuppliers : Decodable, Equatable {
-    public var id: String
-    public var createdAt: String
-    public var fullname: String
-    public var avatar: String
-    public var phone: String
-    public var company: String
-    public var email: String
+    let id: String
+    let createdAt: String
+    let fullname: String
+    let avatar: String
+    let phone: String
+    let company: String
+    let email: String
     
 //    static func < (lhs: allSuppliers , rhs: allSuppliers) -> Bool {
 //        lhs.fullname > rhs.fullname

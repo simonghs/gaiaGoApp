@@ -33,12 +33,7 @@ struct SuppliersRow: View {
                     .foregroundColor(Color("Description"))
                     .font(.system(size: 14))
             }
-            
             Spacer()
-            
-            //            Image("goArrow")
-            //                .resizable().scaledToFit()
-            //                .frame(width: 7)
         }.background(Color("Background"))
     }
 }
@@ -46,24 +41,5 @@ struct SuppliersRow: View {
 struct SuppliersRow_Previews: PreviewProvider {
     static var previews: some View {
         SuppliersRow(company: "list.company", fullname: "list.fullname", avatar: "https://gaiago-static-files-prod.s3-eu-west-1.amazonaws.com/statics/mockAvatar/avatar-15.png")
-    }
-}
-
-extension String {
-    func loadImage()->UIImage {
-        do {
-            guard let url = URL(string: self)
-            
-            else {
-                return UIImage()
-            }
-            
-            let data: Data = try Data(contentsOf: url)
-            return UIImage(data: data) ?? UIImage()
-            
-        } catch {
-            //
-        }
-        return UIImage()
     }
 }

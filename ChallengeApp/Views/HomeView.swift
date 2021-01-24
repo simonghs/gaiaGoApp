@@ -35,12 +35,7 @@ struct HomeView: View {
                 
                 SearchBar(placeholder: "Cerca..", value: $searchText)
 //                    .padding(.bottom, 20)
-                
-//                HStack {
-//                    Spacer()
-//                    ActivityIndicator(isAnimating: .constant(true), style: .medium)
-//                    Spacer()
-//                }.isHidden(self.suppliersController.refreshed ? true : false, remove: self.suppliersController.refreshed ? true : false)
+
                 
                 ZStack(alignment: .top) {
                     HStack {
