@@ -11,12 +11,12 @@ struct SuppliersInfo: View {
     
     @State var icon: String
     @State var type: String
+    
     @Binding var info: String
     
     var body: some View {
         
         HStack(alignment: .top, spacing: 15) {
-            
             Image(icon)
                 .renderingMode(.template)
                 .resizable().scaledToFit()

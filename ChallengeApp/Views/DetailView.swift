@@ -11,10 +11,9 @@ struct DetailView: View {
     
     @EnvironmentObject var suppliersController: APISuppliers
     
-    @State var dateFormatted: String = ""
+    @State private var dateFormatted: String = ""
     
     @Binding var inDetail: Bool
-    
     
     var body: some View {
         
@@ -27,10 +26,8 @@ struct DetailView: View {
                 .cornerRadius(12, corners: [.bottomLeft, .bottomRight])
                 .edgesIgnoringSafeArea(.top)
             
-            
             VStack {
                 HStack(alignment: .center) {
-                    
                     Button (action: {self.inDetail = false}) {
                         Image("CloseArrow")
                             .renderingMode(.template)
@@ -52,7 +49,6 @@ struct DetailView: View {
                 
                 VStack(alignment: .leading) {
                     Spacer()
-                    
                     VStack(alignment: .leading, spacing: 35) {
                         
                         SuppliersInfo(icon: "Company", type: "Compagnia", info: .constant(self.suppliersController.suppliersDetail.company))
@@ -60,7 +56,6 @@ struct DetailView: View {
                         SuppliersInfo(icon: "Mail", type: "Email", info: .constant(self.suppliersController.suppliersDetail.email.lowercased()))
                         
                         SuppliersInfo(icon: "Date", type: "Fornitore dal", info: self.$dateFormatted)
-                        
                         
                         MainButton(text: self.suppliersController.suppliersDetail.phone, action: {let telephone = "tel://"
                                     let formattedString = telephone + self.suppliersController.suppliersDetail.phone
@@ -76,7 +71,6 @@ struct DetailView: View {
             
             .onAppear {
                 let string = self.suppliersController.suppliersDetail.createdAt
-                
                 let dateFormatter = DateFormatter()
                 let tempLocale = dateFormatter.locale
                 dateFormatter.locale = Locale(identifier: "it_CH")

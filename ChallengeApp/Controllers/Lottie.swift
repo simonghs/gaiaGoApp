@@ -23,8 +23,6 @@ struct Lottie: UIViewRepresentable {
         animationView.play()
         animationView.clipsToBounds = false
 
-        
-        
         animationView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(animationView)
         

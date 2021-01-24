@@ -22,7 +22,6 @@ struct MainButton: View {
                 .font(.system(size: 16))
             
             Spacer()
-            
         }
         .overlay(
             RoundedRectangle(cornerRadius: 10)

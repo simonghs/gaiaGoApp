@@ -4,12 +4,12 @@
 //
 //  Created by Simone on 22/01/21.
 //
-
+import Foundation
 import SwiftUI
-
 struct SearchBar: View {
     
     @State var placeholder: String
+    
     @Binding var value: String
     
     var editingChanged: (Bool)->() = { _ in }
@@ -57,27 +57,6 @@ struct SearchBar: View {
         )
         .frame(height: 50).background(Color("FieldBG")).cornerRadius(10)
     }
-    
-//        var body: some View {
-//            VStack{
-//                ZStack {
-//                    HStack {
-//                        TextField("Search", text: $value).padding(.trailing, 75)
-//                    }.padding()
-//                    .background(Color.white)
-//
-//                    HStack {
-//                        Spacer()
-//                        Button(action: {
-//                            self.value = ""
-//                        })
-//                        {
-//                            Text("Cancel")
-//                        }.foregroundColor(.black)
-//                    }.padding()
-//                }
-//            }
-//        }
 }
 
 struct SearchBar_Previews: PreviewProvider {
@@ -85,3 +64,4 @@ struct SearchBar_Previews: PreviewProvider {
         SearchBar(placeholder: "Cerca..", value: .constant(""))
     }
 }
+
