@@ -31,18 +31,53 @@ struct SearchBar: View {
                     .padding(.leading, 30)
             }
             
-            TextField("", text: $value, onEditingChanged: editingChanged, onCommit: commit)
-                .foregroundColor(.white)
-                .padding(.leading, 30)
+            HStack {
+                TextField("", text: $value, onEditingChanged: editingChanged, onCommit: commit)
+                    .foregroundColor(Color("ActiveField"))
+                    .padding(.leading, 30)
+                
+                Button(action: {
+                    self.value = ""
+                })
+                {
+                    Image(systemName: "multiply.circle.fill")
+                        .foregroundColor(Color("Placeholder"))
+                }.foregroundColor(.black)
+                .opacity(self.value != "" ? 1 : 0)
+                .offset(x: self.value != "" ? 0 : 5)
+                .animation(Animation.linear(duration: 0.1))
+            }
         }.padding(.horizontal)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(value == "" ? Color("FieldStroke") : Color.white, lineWidth: 1.2)
+                .stroke(value == "" ? Color("FieldStroke") : Color("ActiveField"), lineWidth: 1.2)
                 .frame(height: 50)
+                .animation(Animation.easeIn(duration: 0.2))
             
         )
         .frame(height: 50).background(Color("FieldBG")).cornerRadius(10)
     }
+    
+//        var body: some View {
+//            VStack{
+//                ZStack {
+//                    HStack {
+//                        TextField("Search", text: $value).padding(.trailing, 75)
+//                    }.padding()
+//                    .background(Color.white)
+//
+//                    HStack {
+//                        Spacer()
+//                        Button(action: {
+//                            self.value = ""
+//                        })
+//                        {
+//                            Text("Cancel")
+//                        }.foregroundColor(.black)
+//                    }.padding()
+//                }
+//            }
+//        }
 }
 
 struct SearchBar_Previews: PreviewProvider {

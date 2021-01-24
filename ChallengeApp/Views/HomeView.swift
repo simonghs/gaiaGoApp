@@ -11,7 +11,7 @@ struct HomeView: View {
     
     @EnvironmentObject var suppliersController: APISuppliers
     
-    @State private var searchText: String = ""
+    @State var searchText: String = ""
     @State var showDetail: Bool = false
     @State var refresh: Bool = false
     
@@ -34,10 +34,9 @@ struct HomeView: View {
                 }.padding(.top)
                 
                 SearchBar(placeholder: "Cerca..", value: $searchText)
-//                    .padding(.bottom, 20)
-
                 
                 ZStack(alignment: .top) {
+                    
                     HStack {
                         Spacer()
                         ActivityIndicator(isAnimating: .constant(true), style: .medium)
@@ -50,18 +49,33 @@ struct HomeView: View {
                         
                         
                         if self.searchText != ""{
-                          
+//
                             if self.suppliersController.suppliersList.filter({$0.company.lowercased().contains(self.searchText.lowercased())}).count == 0 {
-                                Text("Nessuna compagnia trovata")
+//
+                                    HStack {
+                                        Text("Nessun risultato trovato 😩")
+                                            .foregroundColor(Color("Title"))
+                                            .fontWeight(.medium)
+                                        Spacer()
+                                    }.padding(.top)
+//
                             }
-                            
+//
                             else {
-                                ForEach(suppliersController.suppliersList.filter({$0.company.lowercased().contains(self.searchText.lowercased())} ), id: \.id) { list in
-                                    
-                                    Text(list.company)
-                                }
+                                VStack {
+                                    ForEach(suppliersController.suppliersList.filter({$0.company.lowercased().contains(self.searchText.lowercased())} ), id: \.id) { list in
+
+                                        SuppliersRow(company: list.company, fullname: list.fullname, avatar: list.avatar).padding(.bottom, 20)
+                                            .onTapGesture {
+                                                self.suppliersController.suppliersDetail = list
+                                                self.showDetail.toggle()
+
+                                            }.sheet(isPresented: $showDetail) {
+                                                DetailView(inDetail: $showDetail)
+                                            }
+                                    }
+                                }.padding(.top)
                             }
-                            
                         }
                         
                         else {
@@ -69,18 +83,22 @@ struct HomeView: View {
                             GeometryReader { g in
                                 let frame = g.frame(in: CoordinateSpace.global)
                                 
-                                if frame.origin.y > 220 {
-    //
-                                    Text("").onAppear{
-//                                        suppliersController.refreshed = false
-                                        suppliersController.getSuppliers()
+                                if frame.origin.y > 180 {
+                                    Text("").onAppear {
                                         self.refresh = true
+                                    }
+                                }
+                                
+                                else if frame.origin.y > 220 {
+                                    Text("").onAppear{
+                                        suppliersController.getSuppliers()
+                                        
                                         
                                         let impactMed = UIImpactFeedbackGenerator(style: .medium)
                                         impactMed.impactOccurred()
                                     }
-    //
                                 }
+                                
                                 
                                 else if frame.origin.y < 200{
                                     Text("").onAppear{
@@ -89,27 +107,22 @@ struct HomeView: View {
                                 }
                                 
                             }
-                        
-                        ForEach(suppliersController.suppliersList, id: \.id) { list in
                             
-                            //                                NavigationLink(destination: DetailView(inDetail: self.$inDetail, detailSuppliers: list)
-                            //                                    .navigationBarTitle(Text("x"))
-                            //                                    .navigationBarHidden(true),
-                            //                                           isActive: self.$inDetail) {
-                            VStack {
-                                SuppliersRow(company: list.company, fullname: list.fullname, avatar: list.avatar).padding(.bottom, 20)
-                                    .onTapGesture {
-                                        self.suppliersController.suppliersDetail = list
-                                        self.showDetail.toggle()
-                                        
-                                    }.sheet(isPresented: $showDetail) {
-                                        DetailView(inDetail: $showDetail)
-                                }
+                            ForEach(suppliersController.suppliersList, id: \.id) { list in
+                                
+//                        ForEach(suppliersController.suppliersList.filter({$0.company.lowercased().contains(self.searchText.lowercased())} ), id: \.id) { list in
+                                
+                                    SuppliersRow(company: list.company, fullname: list.fullname, avatar: list.avatar).padding(.bottom, 20)
+                                        .onTapGesture {
+                                            self.suppliersController.suppliersDetail = list
+                                            self.showDetail.toggle()
+                                            
+                                        }.sheet(isPresented: $showDetail) {
+                                            DetailView(inDetail: $showDetail)
+                                        }
                             }
                         }
-                    }
-                    }
-//                    .background(Color("Background"))
+                    }.padding(0)
                 }
             }.padding(.horizontal, 30)
         }.onTapGesture {

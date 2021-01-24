@@ -29,6 +29,7 @@
 		A9AC725725BD6E3400AE1205 /* Lottie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AC725625BD6E3400AE1205 /* Lottie.swift */; };
 		A9AC726325BD70BD00AE1205 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A9AC726225BD70BD00AE1205 /* loading.json */; };
 		A9AC727725BD7C8300AE1205 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AC727625BD7C8300AE1205 /* Extensions.swift */; };
+		A9AC728825BD90BA00AE1205 /* SuppliersInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AC728725BD90BA00AE1205 /* SuppliersInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		A9AC725625BD6E3400AE1205 /* Lottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lottie.swift; sourceTree = "<group>"; };
 		A9AC726225BD70BD00AE1205 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		A9AC727625BD7C8300AE1205 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A9AC728725BD90BA00AE1205 /* SuppliersInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliersInfo.swift; sourceTree = "<group>"; };
+		A9AC728C25BD928D00AE1205 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +195,7 @@
 			children = (
 				A97254FC25BAEF08008A754D /* SearchBar.swift */,
 				A972550125BAEF15008A754D /* SuppliersRow.swift */,
+				A9AC728725BD90BA00AE1205 /* SuppliersInfo.swift */,
 				A972550625BAEF1F008A754D /* Loading.swift */,
 				A92885BF25BC7D5F0027D5F8 /* ActivityIndicator.swift */,
 				A91E1F1D25BC343B006234E3 /* MainButton.swift */,
@@ -305,6 +309,7 @@
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = A97254A025BAED1F008A754D;
 			packageReferences = (
@@ -366,6 +371,7 @@
 				A9AC725725BD6E3400AE1205 /* Lottie.swift in Sources */,
 				A91E1F1E25BC343B006234E3 /* MainButton.swift in Sources */,
 				A97254FD25BAEF08008A754D /* SearchBar.swift in Sources */,
+				A9AC728825BD90BA00AE1205 /* SuppliersInfo.swift in Sources */,
 				A97254E025BAED90008A754D /* APISuppliers.swift in Sources */,
 				A97254B125BAED1F008A754D /* ContentView.swift in Sources */,
 				A9AC727725BD7C8300AE1205 /* Extensions.swift in Sources */,
@@ -408,6 +414,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A97254B825BAED21008A754D /* Base */,
+				A9AC728C25BD928D00AE1205 /* it */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
