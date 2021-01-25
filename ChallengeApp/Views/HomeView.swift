@@ -14,6 +14,7 @@ struct HomeView: View {
     @State private var searchText: String = ""
     @State private var showDetail: Bool = false
     @State private var refresh: Bool = false
+    @State private var showFilter = false
     
     var body: some View {
         
@@ -22,15 +23,8 @@ struct HomeView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack(alignment: .leading){
-                HStack {
-                    Text("Rubrica fornitori").font(Font.custom("Gilroy-Bold", size: 24))
-                        .foregroundColor(Color("Title"))
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.leading)
-                        .padding(.bottom)
-                    
-                    Spacer()
-                }.padding(.top)
+                
+                Title(text: "Rubrica fornitori").padding(.top)
                 
                 SearchBar(placeholder: "Cerca..", value: self.$searchText)
                 
@@ -39,7 +33,8 @@ struct HomeView: View {
                         Spacer()
                         ActivityIndicator(isAnimating: .constant(true), style: .medium)
                         Spacer()
-                    }.padding(.top, 20)
+                    }
+                    .padding(.top, 20)
                     .isHidden(self.refresh ? false : true, remove: self.refresh ? false : true)
                     
                     ScrollView(.vertical, showsIndicators: false){
@@ -70,10 +65,8 @@ struct HomeView: View {
                         }
                         
                         VStack {
-                            ForEach(suppliersController.suppliersList.filter{self.searchText.isEmpty ? true : $0.fullname.prefix(searchText.count).contains(searchText)}, id: \.fullname) {list in
-                                
+                            ForEach(suppliersController.suppliersList.sorted().filter{self.searchText.isEmpty ? true : $0.fullname.prefix(searchText.count).contains(searchText)}, id: \.fullname) {list in
                                 SuppliersRow(company: list.company, fullname: list.fullname, avatar: list.avatar).padding(.bottom, 20)
-                                    
                                     .onTapGesture {
                                         self.suppliersController.suppliersDetail = list
                                         self.showDetail.toggle()
@@ -85,7 +78,6 @@ struct HomeView: View {
                         }
                     }
                 }
-                
             }.padding(.horizontal, 30)
         }.onTapGesture {
             UIApplication.shared.endEditing()

@@ -34,7 +34,6 @@ struct SuppliersInfo: View {
                     .foregroundColor(Color("Description"))
                     .font(.system(size: 14))
             }
-            
             Spacer()
         }
     }

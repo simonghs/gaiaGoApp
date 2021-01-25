@@ -16,7 +16,13 @@ struct Loading: View {
             
             VStack(alignment: .center) {
                 Spacer()
-                Lottie(filename: "loading").frame(height: 140)
+                Lottie(filename: "balance").frame(height: 150)
+                
+                Text("GaiaGo Challenge")
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color("Title"))
+                    .font(.system(size: 14))
+                
                 Spacer()
             }
         }

@@ -29,8 +29,10 @@ struct MainButton: View {
                 .frame(height: 50)
             
         )
-        .frame(height: 50).background(Color("Primary"))
-        .cornerRadius(10).padding(.bottom, 10)
+        .frame(height: 50)
+        .background(Color("Primary"))
+        .cornerRadius(10)
+        .padding(.bottom, 10)
     }
 }
 

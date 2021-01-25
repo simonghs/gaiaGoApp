@@ -42,12 +42,14 @@ struct SearchBar: View {
                 {
                     Image(systemName: "multiply.circle.fill")
                         .foregroundColor(Color("Placeholder"))
-                }.foregroundColor(.black)
+                }
+                .foregroundColor(.black)
                 .opacity(self.value != "" ? 1 : 0)
                 .offset(x: self.value != "" ? 0 : 5)
                 .animation(Animation.linear(duration: 0.1))
             }
-        }.padding(.horizontal)
+        }
+        .padding(.horizontal)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(value == "" ? Color("FieldStroke") : Color("ActiveField"), lineWidth: 1.2)
@@ -55,7 +57,8 @@ struct SearchBar: View {
                 .animation(Animation.easeIn(duration: 0.2))
             
         )
-        .frame(height: 50).background(Color("FieldBG")).cornerRadius(10)
+        .frame(height: 50).background(Color("FieldBG"))
+        .cornerRadius(10)
     }
 }
 

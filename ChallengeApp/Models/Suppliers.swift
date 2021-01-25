@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-struct allSuppliers : Decodable, Equatable {
+struct allSuppliers : Decodable, Equatable, Comparable {
     let id: String
     let createdAt: String
     let fullname: String
@@ -18,8 +18,8 @@ struct allSuppliers : Decodable, Equatable {
     let company: String
     let email: String
     
-//    static func < (lhs: allSuppliers , rhs: allSuppliers) -> Bool {
-//        lhs.fullname > rhs.fullname
-//    }
+    static func < (lhs: allSuppliers , rhs: allSuppliers) -> Bool {
+        lhs.fullname < rhs.fullname
+    }
 }
 
